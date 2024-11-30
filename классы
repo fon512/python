@@ -1,0 +1,25 @@
+class Dog:
+    def __init__(self,dogh, парода, вес, злоба, доброта, дрожь ):
+        self.name = dogh
+        self.пар = парода
+        self.в = вес
+        self.зло = злоба
+        self.доб = доброта
+        self.дро = дрожь
+    def Info(self):
+        print('кличька:', self.name)
+        print('парода:', self.пар)
+        print('вес:', self.в)
+        print('злоба:', self.зло)
+        print('доброта:', self.доб)
+        print('дрожь:',self.дро)
+
+    def Run(self):
+        print(self.name, 'бежит')
+
+dog1 = Dog('кличька', 'хаски', '52кг', 'много', '52кг', 5)
+dog1.Run()
+dog1.Info()
+dog2 = Dog("хз","хз", 3456, 5252525252, 0,64)
+dog2.Run()
+dog2.Info()
