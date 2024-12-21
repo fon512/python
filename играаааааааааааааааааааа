@@ -1,0 +1,75 @@
+import pygame
+from random import randint as rd
+# РАЗМЕРЫ ОКОША ЕСЛИ ПИШЕШЬ БОЛЬШИМИ БУКВАМИ ЗНАЧИТ ИХ НЕ МЕНЯТЬ
+
+WLDTN = 1000
+HELGHT = 800
+
+FPS = 60
+#ЗАДАЕМ ЦВЕТ
+WDTN = (255, 255, 255)
+WWW = (0, 0, 255)
+SSS = (255, 0, 0)
+AAA = (255, 0, 255)
+DDD = (1, 20, 58)
+
+#СОЗДАЁМ ИГРУ И ОКНО
+
+pygame.init()
+#pygame.mixer.init()
+screen = pygame.display.set_mode((WLDTN, HELGHT))
+pygame.display.set_caption('My Game')
+clock = pygame.time.Clock()
+
+
+
+
+
+#кординаты
+y = 0
+x = 0
+#Циклы игры
+running = True
+while running:
+
+    screen.fill((rd(0,45), rd(0,38), rd(0,255)))
+    screen.fill((74, 109, 65))
+    pygame.draw.rect(screen,DDD,(x,y,60,30))
+
+
+
+    if x >= WLDTN+40:
+        x=-100
+
+    #Держим цикол на правельной скорости
+    clock.tick(FPS)
+
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_d]:
+        x = x+1
+    elif keys[pygame.K_a]:
+        x = x - 1
+
+    elif keys[pygame.K_s]:
+        y = y + 1
+
+    elif keys[pygame.K_w]:
+        y = y - 1
+
+
+
+
+
+
+
+
+
+    pygame.display.update()
+    #ввод процеса (события)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+pygame.quit()
+
+
