@@ -4,10 +4,10 @@ from random import randint as rd
 from player import Player
 from enemy import Enemy
 # РАЗМЕРЫ ОКОШКА
-WIDTH = 1000
-HEIGHT = 1350
+WIDTH = 1300
+HEIGHT = 750
 
-FPS = 60
+FPS = 1000
 
 # Задаем цвета
 WHITE = (255, 255, 255)
@@ -38,29 +38,13 @@ while running:
 
     pygame.draw.rect(screen, GREEN,(x,200,50,20))
     player.draw(screen)
+    player.movement()
     if x >= WIDTH+20:
         x = -70
     # Держим цикл на правильной скорости
     clock.tick(FPS)
-
-    # Управление 
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_d]:
-        x = x + 1
-    elif keys[pygame.K_a]:
-        x = x - 1
-    if keys[pygame.K_s]:
-        y += 1
-    elif keys[pygame.K_w]:
-        y -= 1
-    if keys[pygame.K_j]:
-        player.y += 1
-    elif keys[pygame.K_u]:
-        player.y -= 1
-    if keys[pygame.K_k]:
-        player.x += 1
-    elif keys[pygame.K_h]:
-        player.x -= 1
+ 
+    
     pygame.display.update()
     # Ввод процесса (события)
     for event in pygame.event.get():

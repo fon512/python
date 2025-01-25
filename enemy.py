@@ -26,14 +26,15 @@ class Enemy:
     def draw(self,screen:pygame.Surface):
         self.rect.center = (self.x, self.y)
         screen.blit(self.surface,self.rect)
-    def follow(self, player, speed=2):
+    def follow(self, player, speed=1):
         # Вычисляем расстояние до цели
         dx = player.x - self.x
         dy = player.y - self.y
-        distance = (dx ** 2 + dy ** 2) **0.5
+
+        distance = (dx ** 2 + dy ** 2) ** 0.5
         if distance > 0:
             dx /= distance
-            dx /= distance
+            dy /= distance
         # Если расстояние больше нуля, двигаемся к цели
         
             self.x += dx * speed
