@@ -1,6 +1,7 @@
 import pygame
 
-class Enemy:
+class Enemy(pygame.sprite.Sprite):
+
     hp = 100
     damage = 10
     width = 50
@@ -13,6 +14,7 @@ class Enemy:
     rect = ""
 
     def __init__(self, image, width=50,height=50, x=100,y=100, damage=10):
+        super().__init__()
         self.image = image
         self.width = width
         self.height = height
@@ -30,12 +32,22 @@ class Enemy:
         # Вычисляем расстояние до цели
         dx = player.x - self.x
         dy = player.y - self.y
+        distance = (dx ** 2 + dy ** 2) **0.5
 
         distance = (dx ** 2 + dy ** 2) ** 0.5
         if distance > 0:
             dx /= distance
+            dx /= distance
             dy /= distance
         # Если расстояние больше нуля, двигаемся к цели
-        
+
             self.x += dx * speed
-            self.y += dy * speed   
+
+
+
+
+
+
+
+
+
