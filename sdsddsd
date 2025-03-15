@@ -1,0 +1,54 @@
+from tkinter import*
+window=Tk()
+window.geometry('800x800')
+
+window.title('СОСАЛ?')
+
+window['bg']='Lime'
+l2 = Label(text='Логин',font='Arialbold 25', bg='Violet', fg='Lime')
+l2.pack()
+
+def pipa():
+    if (en.get() == 'pipa'):
+        nad4 = Label(text='правильноооо', font='Arialbold 25',bg='Yellow', fg='Blue')
+        nad4.pack()
+        l2.pack_forget()
+    else:
+        nad5 = Label(text=' тебя не уважаю иди отсюдя',font='Arialbold 25',bg='Yellow', fg='Blue')
+        nad5.pack()
+
+
+en=Entry(width=350, bg='Yellow', fg='Blue', font='Arialbold 25', show="" )
+en.pack()
+
+b2 = Button(window,width=200,text='Cocal', command=pipa,font='Arialbold 25',bg='Yellow', fg='Blue')
+b2.pack()
+
+
+
+l1 = Label(text='СОСАЛ? ДА ИЛИ НЕТ',font='Arialbold 25', bg='Violet', fg='Lime')
+l1.pack()
+
+def password():
+    if (en.get() == 'да'):
+        nad2 = Label(text='я тебяяяя уважаю', font='Arialbold 25',bg='Yellow', fg='Blue')
+        nad2.pack()
+        l1.pack_forget()
+    else:
+        nad3 = Label(text=' тебя не уважаю иди отсюдя',font='Arialbold 25',bg='Yellow', fg='Blue')
+        nad3.pack()
+
+
+en=Entry(width=350, bg='Yellow', fg='Blue', font='Arialbold 25', show=" " )
+en.pack()
+
+b2 = Button(window,width=200,text='Cocal', command=password,font='Arialbold 25',bg='Yellow', fg='Blue')
+b2.pack()
+
+
+
+
+
+
+
+window.mainloop()
