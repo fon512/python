@@ -42,12 +42,3 @@ class Enemy(pygame.sprite.Sprite):
         # Если расстояние больше нуля, двигаемся к цели
 
             self.x += dx * speed
-
-
-
-
-
-
-
-
-

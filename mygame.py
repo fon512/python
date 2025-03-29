@@ -4,6 +4,8 @@ from random import randint as rd
 from player import Player
 from enemy import Enemy
 
+
+
 # РАЗМЕРЫ ОКОШКА
 WIDTH = 1000
 HEIGHT = 1350
@@ -41,11 +43,23 @@ for i in range(5):
 
 y = 0
 x = 0
+
+bullets = []
+countHit = 0
 # Цикл игры
 running = True
 while running:
-
     screen.fill(WHITE)
+
+    for bullet in bullets:
+        bullet.draw(screen)
+        bullet.move()
+
+        collideSprite = pygame.sprite.spritecollideany(bullet, enemyGroup)
+        if collideSprite:
+            bullets.remove(bullet)
+            enemyGroup.remove(collideSprite)
+            countHit += 1
 
     enemy.draw(screen)
     enemy.follow(player, 1)
@@ -69,32 +83,18 @@ while running:
 
     clock.tick(FPS)
 
-    # Управление
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_d]:
-        x = x + 1
-    elif keys[pygame.K_a]:
-        x = x - 1
-    if keys[pygame.K_s]:
-        y += 1
-    elif keys[pygame.K_w]:
-        y -= 1
-    if keys[pygame.K_j]:
-        player.y += 1
-    elif keys[pygame.K_u]:
-        player.y -= 1
-    if keys[pygame.K_k]:
-        player.x += 1
-    elif keys[pygame.K_h]:
-        player.x -= 1
-
+    mouse_x, mouse_y = pygame.mouse.get_pos()
     pygame.display.update()
     # Ввод процесса (события)
     for event in pygame.event.get():
         # check for closing window
         if event.type == pygame.QUIT:
             running = False
-
+        elif  event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:
+                bullet = player.shoot(mouse_x, mouse_y)
+                if bullet:
+                    bullets.append(bullet)
 pygame.quit()
 
 # домашка 21.12.2024
